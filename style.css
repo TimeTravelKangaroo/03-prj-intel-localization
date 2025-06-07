@@ -1,0 +1,185 @@
+/* Use a modern sans-serif font for the whole page */
+body {
+  font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+}
+
+
+/* Hero Section Styles */
+header {
+  /* Add a blue gradient background */
+  background: linear-gradient(135deg, #1565c0 0%, #42a5f5 100%);
+  color: white; /* Make text white for contrast */
+  padding: 40px 0; /* Add space above and below */
+  text-align: center; /* Center all content */
+}
+
+/* Logo styling */
+header img {
+  width: 100px; /* Set a reasonable logo size */
+  margin-bottom: 20px; /* Space below the logo */
+}
+
+/* Main heading style */
+header h1 {
+  font-family: 'Roboto Slab', 'Oswald', 'Arial Black', 'Arial Bold', Gadget, sans-serif; /* Google font for heading */
+  font-size: 2.5em; /* Make the heading large */
+  margin: 10px 0; /* Space above and below */
+  letter-spacing: 2px; /* Add some spacing between letters */
+}
+
+header p {
+  font-family: 'Open Sans', 'Segoe UI', 'Arial', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Friendly, clean font for subheading */
+  font-size: 1.2em; /* Slightly larger text */
+  max-width: 700px; /* Limit width for readability */
+  margin: 25px auto 0 auto; /* Add top margin, center the paragraph */
+  opacity: 0.95; /* Slight transparency for a modern look */
+}
+
+/* Optional: Add a subtle box shadow to the hero for depth */
+header div {
+  background: rgba(21, 101, 192, 0.1); /* Slightly lighter overlay */
+  display: inline-block; /* Shrink to fit content */
+  padding: 30px 40px; /* Add padding inside the box */
+  border-radius: 16px; /* Rounded corners */
+  box-shadow: 0 4px 24px rgba(21, 101, 192, 0.15); /* Soft shadow */
+}
+
+/* Timeline Cards Section Styles */
+section {
+  /* Use flex to lay out cards in a row */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; /* Prevent wrapping to next line */
+  gap: 24px; /* Space between cards */
+  margin: 40px 0;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding-top: 24px; /* Add space above the cards */
+  padding-bottom: 16px; /* Space for scrollbar */
+  padding-left: 24px;  /* Add space on the left */
+  padding-right: 24px; /* Add space on the right */
+  scroll-behavior: smooth; /* Smooth scrolling */
+  scroll-snap-type: x mandatory; /* Enable horizontal scroll snap */
+  /* Add scroll padding so snap includes the gap */
+  scroll-padding-left: 24px; /* Same as gap or padding-left */
+  scroll-padding-right: 24px; /* Same as gap or padding-right */
+}
+
+/* Each card will snap to the start of the scroll area */
+section > div {
+  background: #e4f2ff; /* Light blue background for cards */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(21, 101, 192, 0.08); /* Soft shadow */
+  width: 250px; /* Fixed width for all cards */
+  height: 210px; /* Fixed height for all cards */
+  min-width: 250px; /* Prevent shrinking for horizontal scroll */
+  padding: 20px 16px 16px 16px; /* Padding inside the card */
+  text-align: center; /* Center content */
+  position: relative; /* Needed for hover effect */
+  transition: transform 0.2s;
+  overflow: hidden; /* Hide overflow for hover effect */
+  scroll-snap-align: start; /* Snap each card to the start when scrolling */
+}
+
+/* Responsive: Stack cards vertically on small screens */
+@media (max-width: 700px) {
+  section {
+    flex-direction: column; /* Stack cards vertically */
+    gap: 20px; /* Less space between cards */
+    overflow-x: visible; /* No horizontal scroll needed */
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 0; /* Remove top margin */
+  }
+  section > div {
+    margin: 0 auto; /* Center cards */
+  }
+  /* Move the timeline info paragraph above the cards visually */
+  .timeline-info {
+    margin-bottom: 20px;
+    margin-top: 24px;
+    display: block;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .body header:nth-child(1) {
+  order: 1; /* Ensure header is first */
+  }
+  /* The second box will be shown third (order 3) */
+  .body section:nth-child(2) {
+    order: 3;
+  }
+  /* The third box will be shown second (order 2) */
+  .body .timeline-info:nth-child(3) {
+    order: 2;
+    margin-top: 40px; /* Add space above the timeline info */
+  }
+}
+
+/* Card image styling */
+section > div img {
+  width: 250px; /* Make image fill card width */
+  height: 150px; /* Fixed height for images */
+  object-fit: cover; /* Crop image to fit */
+  object-position: center; /* Default: center the image */
+  border-radius: 8px; /* Rounded image corners */
+  margin-bottom: 12px; /* Space below image */
+}
+
+/* Show the top part of the photo for card 5 only */
+section > div:nth-of-type(5) img {
+  object-position: top; /* Show the top part of the image */
+}
+
+/* Card headers */
+section > div h2 {
+  font-size: 1.3em;
+  color: #1565c0;
+  margin: 0 0 4px 0;
+}
+
+section > div h3 {
+  font-size: 1.1em;
+  color: #333;
+  margin: 0 0 10px 0;
+}
+
+/* Hide the card's paragraph by default */
+section > div p {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 24px 16px 16px 16px;
+  background: rgba(21, 101, 192, 0.85); /* Translucent blue background */
+  color: #fff;
+  border-radius: 12px;
+  font-size: 1em;
+  z-index: 2;
+  box-sizing: border-box;
+  text-align: left;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* Show the paragraph on hover */
+section > div:hover p {
+  display: block;
+  opacity: 1;
+}
+
+/* Style for the timeline info paragraph */
+.timeline-info {
+  /* Add some spacing for mobile */
+  margin: 16px 0;
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+}
+
