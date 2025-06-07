@@ -5,7 +5,6 @@ body {
   flex-direction: column; /* Stack elements vertically */
 }
 
-
 /* Hero Section Styles */
 header {
   /* Add a blue gradient background */
@@ -47,13 +46,13 @@ header div {
 }
 
 /* Timeline Cards Section Styles */
-section {
+.timeline {
   /* Use flex to lay out cards in a row */
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap; /* Prevent wrapping to next line */
   gap: 24px; /* Space between cards */
-  margin: 40px 0;
+  margin-bottom: 30px;
   overflow-x: auto; /* Enable horizontal scrolling */
   padding-top: 24px; /* Add space above the cards */
   padding-bottom: 16px; /* Space for scrollbar */
@@ -67,7 +66,8 @@ section {
 }
 
 /* Each card will snap to the start of the scroll area */
-section > div {
+.card {
+  box-sizing: content-box;
   background: #e4f2ff; /* Light blue background for cards */
   border-radius: 12px; /* Rounded corners */
   box-shadow: 0 2px 8px rgba(21, 101, 192, 0.08); /* Soft shadow */
@@ -82,45 +82,8 @@ section > div {
   scroll-snap-align: start; /* Snap each card to the start when scrolling */
 }
 
-/* Responsive: Stack cards vertically on small screens */
-@media (max-width: 700px) {
-  section {
-    flex-direction: column; /* Stack cards vertically */
-    gap: 20px; /* Less space between cards */
-    overflow-x: visible; /* No horizontal scroll needed */
-    padding-left: 8px;
-    padding-right: 8px;
-    margin-top: 0; /* Remove top margin */
-  }
-  section > div {
-    margin: 0 auto; /* Center cards */
-  }
-  /* Move the timeline info paragraph above the cards visually */
-  .timeline-info {
-    margin-bottom: 20px;
-    margin-top: 24px;
-    display: block;
-  }
-  body {
-    display: flex;
-    flex-direction: column;
-  }
-  .body header:nth-child(1) {
-  order: 1; /* Ensure header is first */
-  }
-  /* The second box will be shown third (order 3) */
-  .body section:nth-child(2) {
-    order: 3;
-  }
-  /* The third box will be shown second (order 2) */
-  .body .timeline-info:nth-child(3) {
-    order: 2;
-    margin-top: 40px; /* Add space above the timeline info */
-  }
-}
-
 /* Card image styling */
-section > div img {
+.card img {
   width: 250px; /* Make image fill card width */
   height: 150px; /* Fixed height for images */
   object-fit: cover; /* Crop image to fit */
@@ -130,25 +93,27 @@ section > div img {
 }
 
 /* Show the top part of the photo for card 5 only */
-section > div:nth-of-type(5) img {
+.card:nth-of-type(5) img {
   object-position: top; /* Show the top part of the image */
 }
 
 /* Card headers */
-section > div h2 {
+.card h2 {
   font-size: 1.3em;
   color: #1565c0;
   margin: 0 0 4px 0;
+  font-weight: bold; /* Make the header bold */
 }
 
-section > div h3 {
+.card h3 {
   font-size: 1.1em;
   color: #333;
   margin: 0 0 10px 0;
+  font-weight: bold;
 }
 
 /* Hide the card's paragraph by default */
-section > div p {
+.card p {
   display: none;
   position: absolute;
   left: 0;
@@ -169,7 +134,7 @@ section > div p {
 }
 
 /* Show the paragraph on hover */
-section > div:hover p {
+.card:hover p {
   display: block;
   opacity: 1;
 }
@@ -183,3 +148,42 @@ section > div:hover p {
   color: #333;
 }
 
+/* Style for the subscription section */
+.subscribe-section {
+  background: #e4f2ff; /* Light blue background */
+  border-radius: 12px;  /* Rounded corners */
+  padding: 32px 16px;   /* Space inside the box */
+  margin: 0 auto 32px auto; /* Center and add space below */
+  max-width: 400px;     /* Limit width for better appearance */
+  box-shadow: 0 2px 8px rgba(21, 101, 192, 0.08); /* Soft shadow */
+}
+
+/* Style the form input and button to appear inline and neat */
+.subscribe-section form input[type="email"] {
+  display: inline-block;
+  width: 200px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.subscribe-section form button {
+  vertical-align: middle;
+}
+
+/* Responsive: Stack cards vertically on small screens */
+@media (max-width: 700px) {
+  .timeline {
+    flex-direction: column; /* Stack cards vertically */
+    gap: 20px; /* Less space between cards */
+    overflow-x: visible; /* No horizontal scroll needed */
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 0; /* Remove top margin */
+  }
+  
+  .card {
+    margin: 0 auto; /* Center cards */
+  }
+
+  
+}
