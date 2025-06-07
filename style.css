@@ -170,6 +170,31 @@ header div {
   vertical-align: middle;
 }
 
+/* Footer styles for better accessibility */
+footer {
+  background: #f8f9fa; /* Keep a light background */
+  color: #222;         /* Darker text for higher contrast */
+}
+
+/* Make footer links dark and bold for readability */
+footer nav a {
+  color: #1565c0;           /* Dark blue for good contrast */
+  font-weight: bold;        /* Make links stand out */
+  text-decoration: underline; /* Underline for clarity */
+}
+
+footer nav a:focus,
+footer nav a:hover {
+  color: #0d47a1;           /* Even darker blue on hover/focus */
+  outline: 2px solid #0d47a1; /* Visible focus indicator */
+  outline-offset: 2px;
+}
+
+/* Make the copyright text darker */
+footer .text-secondary {
+  color: #222 !important;   /* Override Bootstrap's lighter gray */
+}
+
 /* Responsive: Stack cards vertically on small screens */
 @media (max-width: 700px) {
   .timeline {
